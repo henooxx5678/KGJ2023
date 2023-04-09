@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour {
     
@@ -48,6 +49,8 @@ public class RoundManager : MonoBehaviour {
     }
 
     List<int> _validTargets = new List<int>();
+    bool _isReadyToClearLevel = false;
+    bool _isLevelCleared = false;
 
 
     void Awake() {
@@ -66,6 +69,8 @@ public class RoundManager : MonoBehaviour {
             _rewindingHandler.RewindStarted += OnRewindStarted;
             _rewindingHandler.RewindStopped += OnRewindStopped;
         }
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void OnDisable () {
@@ -78,10 +83,12 @@ public class RoundManager : MonoBehaviour {
             _rewindingHandler.RewindStarted -= OnRewindStarted;
             _rewindingHandler.RewindStopped -= OnRewindStopped;
         }
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Start () {
-        NewRound(); //temp
+        OnNewRound();
     }
 
     void Update () {
@@ -94,21 +101,30 @@ public class RoundManager : MonoBehaviour {
 
         if (RestartKeyHoldedProgress >= 1f) {
             _restartKeyStartHoldTime = Mathf.Infinity;
-            NewRound();
+            RestartRound();
+        }
+
+        if (_isReadyToClearLevel && !_isLevelCleared && !_rewindingHandler.IsRewinding) {
+            OnLevelClear();
         }
     }
 
-    public void NewRound () {
-        _playerInputHandler.BlockInput();
+    public void RestartRound () {
+        // _playerInputHandler.BlockInput();
 
-        _rewindingHandler.OnRoundStart();
-        AudioSourceController.PlayAllBackward(true);
+        // SpeakerAudioSourceController.PlayAllBackward(true);
 
         // Reset player status.
-        _playerStatusManager.SetStatus(_playerInitPosition, _playerInitRotation, _playerInitCamRotation);
+        // _playerStatusManager.SetStatus(_playerInitPosition, _playerInitRotation, _playerInitCamRotation);
 
-        _playerInputHandler.UnblockInput();
+        // _playerInputHandler.UnblockInput();
 
+        // Reload current scene.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnNewRound () {
+        _rewindingHandler.OnRoundStart();
         print("New Round");
     }
 
@@ -131,17 +147,17 @@ public class RoundManager : MonoBehaviour {
         }
 
         if (_validTargets.SequenceEqual(Enumerable.Range(0, TargetCount))) {
-            OnLevelClear();
+            _isReadyToClearLevel = true;
         }
     }
 
     void OnPlayerEnteredTarget (int targetIndex) {
-        print("Player Entered Target " + targetIndex);
+        // print("Player Entered Target " + targetIndex);
         currentInTargetEventCoroutine = StartCoroutine(InTargetEvent(targetIndex));
     }
 
     void OnPlayerExitedTarget (int targetIndex) {
-        print("Player Exited Target " + targetIndex);
+        // print("Player Exited Target " + targetIndex);
         currentInTargetEventCoroutine = null;
     }
 
@@ -157,7 +173,9 @@ public class RoundManager : MonoBehaviour {
 
     void OnLevelClear () {
         print("== Level Clear! ==");
+        _isLevelCleared = true;
         _levelClearLaunched.SetActive(true);
+        SpeakerAudioSourceController.StopAll();
     }
 
     void OnPlayerExitLevel () {

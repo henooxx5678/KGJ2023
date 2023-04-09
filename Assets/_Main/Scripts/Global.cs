@@ -7,8 +7,14 @@ using DG.Tweening;
 
 public static class Global {
 
-    public static void OnPlayerExitLevel (int levelNumber) {
+    public static Action LookSensitivityChanged;
 
+    public static void OnPlayerExitLevel (int levelNumber) {
+        
+    }
+
+    public static void OnLookSensitivityChanged () {
+        LookSensitivityChanged?.Invoke();
     }
 
 }

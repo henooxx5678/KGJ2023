@@ -102,7 +102,7 @@ public class RewindingHandler : MonoBehaviour {
 
         _isRewinding = true;
         _playerInputHandler.BlockInput();
-        AudioSourceController.PlayAllForward();
+        SpeakerAudioSourceController.PlayAllForward();
         RewindStarted?.Invoke();
         RewindStartedEvent.Invoke();
     }
@@ -114,7 +114,7 @@ public class RewindingHandler : MonoBehaviour {
 
         _isRewinding = false;
         _playerInputHandler.UnblockInput();
-        AudioSourceController.PlayAllBackward();
+        SpeakerAudioSourceController.PlayAllBackward();
         RewindStopped?.Invoke();
         RewindStoppedEvent.Invoke();
     }

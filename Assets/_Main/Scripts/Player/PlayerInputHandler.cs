@@ -9,11 +9,24 @@ public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] PlayerLookHandler _lookHandler;
 
     // Configs
-    [SerializeField] float _lookSensitivity = 100f;
+    [SerializeField] float _defaultLookSensitivity = 1087f;
 
+    float _currentLookSensitive = 1087f;
 
     public bool IsInputBlocked = false;
 
+
+    void Awake () {
+        OnLookSensitivityChanged();
+    }
+
+    void OnEnable () {
+        Global.LookSensitivityChanged += OnLookSensitivityChanged;
+    }
+
+    void OnDisable () {
+        Global.LookSensitivityChanged -= OnLookSensitivityChanged;
+    }
 
     void Update () {
 
@@ -30,7 +43,7 @@ public class PlayerInputHandler : MonoBehaviour {
         }
 
         _moveHandler.SetMoveDirection(Input.GetAxis("Horizontal") * Vector2.right + Input.GetAxis("Vertical") * Vector2.up);
-        _lookHandler.SetLookAngularSpeeds(new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * _lookSensitivity);
+        _lookHandler.SetLookAngularSpeeds(new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * _currentLookSensitive);
     }
 
 
@@ -44,6 +57,15 @@ public class PlayerInputHandler : MonoBehaviour {
     public void UnblockInput () {
         IsInputBlocked = false;
         _moveHandler.On();
+    }
+
+    void OnLookSensitivityChanged () {
+        if (PlayerPrefs.HasKey("LookSensitivity")) {
+            _currentLookSensitive = PlayerPrefs.GetFloat("LookSensitivity");
+        }
+        else {
+            _currentLookSensitive = _defaultLookSensitivity;
+        }
     }
 
 }
