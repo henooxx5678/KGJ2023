@@ -12,6 +12,8 @@ public class RoundManager : MonoBehaviour {
     [Header("REFs")]
     [SerializeField] GameObject _levelClearLaunched;
     [SerializeField] RewindingHandler _rewindingHandler;
+
+    [Header("REFs - Player")]
     [SerializeField] PlayerStatusManager _playerStatusManager;
     [SerializeField] PlayerInputHandler _playerInputHandler;
     [SerializeField] PlayerTriggerer _playerTriggerer;

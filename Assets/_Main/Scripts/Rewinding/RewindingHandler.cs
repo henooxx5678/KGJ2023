@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using DG.Tweening;
 
 
@@ -21,6 +22,8 @@ public class RewindingHandler : MonoBehaviour {
 
     public Action RewindStarted;
     public Action RewindStopped;
+    public UnityEvent RewindStartedEvent;
+    public UnityEvent RewindStoppedEvent;
     
 
     float _roundTime = 0f;
@@ -101,6 +104,7 @@ public class RewindingHandler : MonoBehaviour {
         _playerInputHandler.BlockInput();
         AudioSourceController.PlayAllForward();
         RewindStarted?.Invoke();
+        RewindStartedEvent.Invoke();
     }
 
     void TryStopRewinding () {
@@ -112,6 +116,7 @@ public class RewindingHandler : MonoBehaviour {
         _playerInputHandler.UnblockInput();
         AudioSourceController.PlayAllBackward();
         RewindStopped?.Invoke();
+        RewindStoppedEvent.Invoke();
     }
 
 
