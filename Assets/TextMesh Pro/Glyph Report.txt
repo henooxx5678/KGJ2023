@@ -1,81 +1,14 @@
-Font: Noto Sans  Style: Medium
-Point Size: 180   SP/PD Ratio: 0.6%
+Font: Microsoft JhengHei  Style: Regular
+Point Size: 38   SP/PD Ratio: 13.2%
 
-Characters included: 94/162
-Missing characters: 68
+Characters included: 176/177
+Missing characters: 1
 Excluded characters: 0
 
 Characters missing from font file:
 ----------------------------------------
 ID: 10	Hex: A	Char [
 ]
-ID: 65292	Hex: FF0C	Char [，]
-ID: 12290	Hex: 3002	Char [。]
-ID: 65288	Hex: FF08	Char [（]
-ID: 65289	Hex: FF09	Char [）]
-ID: 12300	Hex: 300C	Char [「]
-ID: 12301	Hex: 300D	Char [」]
-ID: 12302	Hex: 300E	Char [『]
-ID: 12303	Hex: 300F	Char [』]
-ID: 12289	Hex: 3001	Char [、]
-ID: 65307	Hex: FF1B	Char [；]
-ID: 65306	Hex: FF1A	Char [：]
-ID: 38364	Hex: 95DC	Char [關]
-ID: 21345	Hex: 5361	Char [卡]
-ID: 19979	Hex: 4E0B	Char [下]
-ID: 19968	Hex: 4E00	Char [一]
-ID: 19978	Hex: 4E0A	Char [上]
-ID: 36889	Hex: 9019	Char [這]
-ID: 37027	Hex: 90A3	Char [那]
-ID: 25105	Hex: 6211	Char [我]
-ID: 26159	Hex: 662F	Char [是]
-ID: 35504	Hex: 8AB0	Char [誰]
-ID: 20320	Hex: 4F60	Char [你]
-ID: 20182	Hex: 4ED6	Char [他]
-ID: 23229	Hex: 5ABD	Char [媽]
-ID: 38272	Hex: 9580	Char [門]
-ID: 34987	Hex: 88AB	Char [被]
-ID: 40655	Hex: 9ECF	Char [黏]
-ID: 20303	Hex: 4F4F	Char [住]
-ID: 20102	Hex: 4E86	Char [了]
-ID: 24517	Hex: 5FC5	Char [必]
-ID: 38920	Hex: 9808	Char [須]
-ID: 32147	Hex: 7D93	Char [經]
-ID: 27511	Hex: 6B77	Char [歷]
-ID: 27491	Hex: 6B63	Char [正]
-ID: 30906	Hex: 78BA	Char [確]
-ID: 30340	Hex: 7684	Char [的]
-ID: 38918	Hex: 9806	Char [順]
-ID: 24207	Hex: 5E8F	Char [序]
-ID: 25165	Hex: 624D	Char [才]
-ID: 21487	Hex: 53EF	Char [可]
-ID: 33067	Hex: 812B	Char [脫]
-ID: 20986	Hex: 51FA	Char [出]
-ID: 33267	Hex: 81F3	Char [至]
-ID: 23569	Hex: 5C11	Char [少]
-ID: 25910	Hex: 6536	Char [收]
-ID: 32893	Hex: 807D	Char [聽]
-ID: 31186	Hex: 79D2	Char [秒]
-ID: 37912	Hex: 9418	Char [鐘]
-ID: 31639	Hex: 7B97	Char [算]
-ID: 26377	Hex: 6709	Char [有]
-ID: 21040	Hex: 5230	Char [到]
-ID: 25151	Hex: 623F	Char [房]
-ID: 20839	Hex: 5167	Char [內]
-ID: 20849	Hex: 5171	Char [共]
-ID: 20491	Hex: 500B	Char [個]
-ID: 32882	Hex: 8072	Char [聲]
-ID: 28304	Hex: 6E90	Char [源]
-ID: 25628	Hex: 641C	Char [搜]
-ID: 23563	Hex: 5C0B	Char [尋]
-ID: 25289	Hex: 62C9	Char [拉]
-ID: 38463	Hex: 963F	Char [阿]
-ID: 24067	Hex: 5E03	Char [布]
-ID: 65291	Hex: FF0B	Char [＋]
-ID: 27472	Hex: 6B50	Char [歐]
-ID: 24052	Hex: 5DF4	Char [巴]
-ID: 39340	Hex: 99AC	Char [馬]
-ID: 21475	Hex: 53E3	Char [口]
 
 Characters excluded from packing:
 ----------------------------------------
