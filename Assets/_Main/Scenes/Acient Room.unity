@@ -1392,10 +1392,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6775920340955540857, guid: 12cc45ceb55636243a29faac75a803e7, type: 3}
-      propertyPath: _defaultLookSensitivity
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 6775920340955540860, guid: 12cc45ceb55636243a29faac75a803e7, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -9215,10 +9211,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1616611790}
   m_HandleRect: {fileID: 1516080461}
   m_Direction: 0
-  m_MinValue: 50
-  m_MaxValue: 1200
+  m_MinValue: 200
+  m_MaxValue: 5000
   m_WholeNumbers: 0
-  m_Value: 300
+  m_Value: 1000
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

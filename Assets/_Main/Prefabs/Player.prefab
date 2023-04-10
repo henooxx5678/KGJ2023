@@ -435,7 +435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveHandler: {fileID: 6775920340955540862}
   _lookHandler: {fileID: 6775920340955540863}
-  _defaultLookSensitivity: 1087
+  _lookSensitivityMultiplier: 0.25
+  _defaultLookSensitivity: 1000
   IsInputBlocked: 0
 --- !u!114 &6775920340955540862
 MonoBehaviour:
