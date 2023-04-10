@@ -7,7 +7,7 @@ public class GlobalSettingsInitiator : MonoBehaviour {
     [SerializeField] AudioMixer _masterMixer;
 
 
-    void Awake () {
+    void OnEnable () {
         _masterMixer.SetFloat("Master", AudioTools.ConvertVolumeRateToDB(PlayerPrefs.GetFloat("MasterVolumeRate", 1f)));
     }
 

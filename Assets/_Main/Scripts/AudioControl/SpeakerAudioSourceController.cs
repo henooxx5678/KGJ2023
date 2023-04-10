@@ -38,19 +38,26 @@ public class SpeakerAudioSourceController : MonoBehaviour {
         Instances.Remove(this);
     }
 
+
     public void PlayForward (bool fromStart = false) {
-        if (fromStart) {
-            AudioSource.time = 0f;
-        }
-        AudioSource.pitch = 1f;
-        AudioSource.Play();
+        PlayWithPitch(1f, fromStart);
     }
     
     public void PlayBackward (bool fromStart = false) {
+        PlayWithPitch(-1f, fromStart);
+    }
+
+    void PlayWithPitch (float pitch, bool fromStart = false) {
+
+        float currentTime = AudioSource.time;
+
         if (fromStart) {
-            AudioSource.time = 0f;
+            currentTime = 0f;
         }
-        AudioSource.pitch = -1f;
+
+        AudioSource.Stop();
+        AudioSource.pitch = pitch;
+        AudioSource.time = currentTime;
         AudioSource.Play();
     }
 
