@@ -31,6 +31,7 @@ public class RewindingHandler : MonoBehaviour {
     float _lastLoggedRoundTime = Mathf.NegativeInfinity;
 
 
+    public bool CanRewind { get; protected set; } = true;
     bool _isRewinding = false;
     public bool IsRewinding => _isRewinding;
 
@@ -50,6 +51,12 @@ public class RewindingHandler : MonoBehaviour {
         _isRewinding = false;
         _isLerpingBetweenFrames = false;
     }
+
+    public void BlockRewindAbility () {
+        TryStopRewinding();
+        CanRewind = false;
+    }
+
 
     void Update () {
         if (Input.GetKeyDown(_rewindKey)) {
@@ -95,7 +102,9 @@ public class RewindingHandler : MonoBehaviour {
     }
 
     void TryStartRewinding () {
-        
+        if (!CanRewind) {
+            return;
+        }
         if (_isRewinding) {
             return;
         }

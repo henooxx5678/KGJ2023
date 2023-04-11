@@ -5849,7 +5849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972615764897860854, guid: e2322f0bf3f08c84296db595b6d2087e, type: 3}
       propertyPath: m_text
-      value: "\u81F3\u5C11\u6536\u807D\n2\u79D2\u9418"
+      value: "\u81F3\u5C11\u6301\u7E8C\n\u6536\u807D2\u79D2\u9418"
       objectReference: {fileID: 0}
     - target: {fileID: 1972615764897860854, guid: e2322f0bf3f08c84296db595b6d2087e, type: 3}
       propertyPath: m_fontSize
@@ -7512,7 +7512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1972615764897860854, guid: e2322f0bf3f08c84296db595b6d2087e, type: 3}
       propertyPath: m_text
-      value: "\u4F60\u5FC5\u9808\u300C\u7D93\u6B77\u300D\u6B63\u78BA\u7684\u9806\u5E8F\u624D\u53EF\u812B\u51FA\n---\n\n\u4F5C\u8005\uFF1ADoubleHeat
+      value: "\u4F60\u5FC5\u9808\u300C\u9023\u7E8C\u7D93\u6B77\u300D\u6B63\u78BA\u7684\u9806\u5E8F\u624D\u53EF\u812B\u51FA\n---\n\n\u4F5C\u8005\uFF1ADoubleHeat
         a.k.a. \u8292\u679C\u5566\u4E7E"
       objectReference: {fileID: 0}
     - target: {fileID: 1972615764897860854, guid: e2322f0bf3f08c84296db595b6d2087e, type: 3}
@@ -9042,14 +9042,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff71e4717f82b94b801ca7596626fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelNumber: -1
+  LevelNumber: 1
   TargetCount: 4
   _levelClearLaunched: {fileID: 158957155}
   _rewindingHandler: {fileID: 1010130979}
   _playerStatusManager: {fileID: 333211815}
   _playerInputHandler: {fileID: 333211812}
   _playerTriggerer: {fileID: 333211816}
-  _validInTargetDuration: 2
+  _validInTargetDuration: 1.5
   _restartKey: 27
   _restartKeyHoldingDuration: 1
 --- !u!4 &2117876845

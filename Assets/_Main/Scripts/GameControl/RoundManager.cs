@@ -49,6 +49,7 @@ public class RoundManager : MonoBehaviour {
     }
 
     List<int> _validTargets = new List<int>();
+    bool _isInAnyTarget = false;
     bool _isReadyToClearLevel = false;
     bool _isLevelCleared = false;
 
@@ -104,22 +105,14 @@ public class RoundManager : MonoBehaviour {
             RestartRound();
         }
 
-        if (_isReadyToClearLevel && !_isLevelCleared && !_rewindingHandler.IsRewinding) {
-            OnLevelClear();
+        if (_isReadyToClearLevel && !_isLevelCleared) {
+            if (!_rewindingHandler.IsRewinding || !_isInAnyTarget) {
+                OnLevelClear();
+            }
         }
     }
 
     public void RestartRound () {
-        // _playerInputHandler.BlockInput();
-
-        // SpeakerAudioSourceController.PlayAllBackward(true);
-
-        // Reset player status.
-        // _playerStatusManager.SetStatus(_playerInitPosition, _playerInitRotation, _playerInitCamRotation);
-
-        // _playerInputHandler.UnblockInput();
-
-        // Reload current scene.
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -146,18 +139,24 @@ public class RoundManager : MonoBehaviour {
             _validTargets.RemoveAt(0);
         }
 
+        print("Valid Targets: [" + string.Join(", ", _validTargets.ToArray()) + "], [" + string.Join(", ", Enumerable.Range(0, TargetCount).ToArray()));
+
         if (_validTargets.SequenceEqual(Enumerable.Range(0, TargetCount))) {
+
             _isReadyToClearLevel = true;
+            print("clear");
         }
     }
 
     void OnPlayerEnteredTarget (int targetIndex) {
         // print("Player Entered Target " + targetIndex);
+        _isInAnyTarget = true;
         currentInTargetEventCoroutine = StartCoroutine(InTargetEvent(targetIndex));
     }
 
     void OnPlayerExitedTarget (int targetIndex) {
         // print("Player Exited Target " + targetIndex);
+        _isInAnyTarget = false;
         currentInTargetEventCoroutine = null;
     }
 
@@ -169,9 +168,13 @@ public class RoundManager : MonoBehaviour {
 
     void OnRewindStopped () {
         currentInTargetEventCoroutine = null;
+        _validTargets.Clear();
     }
 
     void OnLevelClear () {
+
+        _rewindingHandler.BlockRewindAbility();
+
         print("== Level Clear! ==");
         _isLevelCleared = true;
         _levelClearLaunched.SetActive(true);

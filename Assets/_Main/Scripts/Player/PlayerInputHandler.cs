@@ -43,8 +43,14 @@ public class PlayerInputHandler : MonoBehaviour {
             _moveHandler.SetSprint(false);
         }
 
+
+        float inEditorCompensation = 1f;
+        #if UNITY_EDITOR
+            inEditorCompensation = 1f / _lookSensitivityMultiplier;
+        #endif
+
         _moveHandler.SetMoveDirection(Input.GetAxis("Horizontal") * Vector2.right + Input.GetAxis("Vertical") * Vector2.up);
-        _lookHandler.SetLookAngularSpeeds(new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * _currentLookSensitivity * _lookSensitivityMultiplier);
+        _lookHandler.SetLookAngularSpeeds(new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * _currentLookSensitivity * _lookSensitivityMultiplier * inEditorCompensation);
     }
 
 
