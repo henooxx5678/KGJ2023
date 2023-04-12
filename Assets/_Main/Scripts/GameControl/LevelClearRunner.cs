@@ -17,11 +17,15 @@ public class LevelClearRunner : MonoBehaviour {
 
     void OnEnable () {
         foreach (GameObject levelClearLaunchedGameObject in _levelClearLaunchedGameObjects) {
-            levelClearLaunchedGameObject.SetActive(true);
+            if (levelClearLaunchedGameObject) {
+                levelClearLaunchedGameObject.SetActive(true);
+            }
         }
 
         foreach (Animator animator in _animators) {
-            animator.SetTrigger("win");
+            if (animator) {
+                animator.SetTrigger("win");
+            }
         }
 
         Camera.main.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato, _shakeRandomness, _shakeFadeOut);
